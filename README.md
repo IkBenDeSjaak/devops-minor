@@ -6,3 +6,4 @@ This repository contains theory information gathered during the minor DevOps.
 
 - [Git](/git.md)
 - [Linux](/linux.md)
+- [Workflows](/workflows.md)
