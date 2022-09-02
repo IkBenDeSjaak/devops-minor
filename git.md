@@ -7,7 +7,7 @@
 - Index: Place where we put our files before we commit
 - Repository: Entire history of the project with commits
 
-![Four areas of Git](/images/areas-of-git.png "Areas of Git")
+![Four areas of Git](/images/areas-of-git.png)
 
 ## Git reset
 

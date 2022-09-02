@@ -34,8 +34,12 @@ Short lived branches: You check them in at the end of the day already.
 
 ### GitHub flow
 
+![GitHub flow](/images/github-flow.png)
+
 De Github workflow maakt gebruikt van twee soorten branches: de master branch en feature branches. Als je een feature maakt maak je een nieuwe branch vanuit de master. Zodra een feature af is maak je een pull request die gemerged kan worden in master.
 
 ### Git flow
+
+![Git flow](/images/git-flow.svg)
 
 De Git workflow maakt gebruik van 5 soorten branches. De belangrijkste zijn master en develop. De master is the source code en production ready. Develop bevat de laatste development changes. Daarnaast zijn er feature branches die worden gemaakt vanaf de develop branch. Ook zijn er release branches die vanaf develop gemaakt worden zodra develop klaar lijkt voor een nieuwe release. In tussentijd tot daadwerkelijke release worden fixes naar deze branch gezet. Bij daadwerkelijke release wordt de branch in master en develop gemerged. Ook zijn er hotfix branches die vanaf master komen die alleen gemaakt worden voor belangrijke snelle fixes. Deze worden gemerged into master en develop.
