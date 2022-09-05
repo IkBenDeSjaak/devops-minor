@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+  mywebapp:
+    build: mywebapp/
+    environment:
+      - DB_URL=jdbc://mydb:5801
+    ports:
+      - 80:80
