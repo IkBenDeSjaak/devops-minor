@@ -12,3 +12,4 @@ This repository contains theory information gathered during the minor DevOps.
 - [Continuous delivery](/cd.md)
 - [C4](/c4.md)
 - [BDD](/bdd.md)
+- [Kubernetes](/kubernetes.md)
