@@ -4,6 +4,8 @@ Een architectuur die gebaseerd is op publiceren en delen van events.
 
 ## General
 
+![EDA illustration](/images/eda-illustration.png)
+
 ### Autonomy over Authority
 
 Sharing data between services is not evil. Autonomous service can deliver more value. Improves availablity
@@ -14,13 +16,18 @@ Service A krijgt nieuwe klant met alle klantgegevens. Service A stuurt event Cus
 
 If no new updates are made to a given data item, eventually all accesses to that item will return the last updated value.
 
+Consistency refers to a database query returning the same data each time the same request is made.
+Strong consistency means the latest data is returned, but, due to internal consistency methods, it may result with higher latency or delay. With eventual consistency, results are less consistent early on, but they are provided much faster with low latency.
+
 #### CAP theorem
 
 Je kan maar een van de drie letters hebben in gedistribueerde systemen.
 
 - Consistency: All nodes in system see the same data at a certain moment in time.
-- Availability: A node will always return a useful response.
-- Partition tolerance: Hoe goed gaat je systeem om met failures.
+- Availability: A node will always return a useful response. But maybe the data is not the most recent.
+- Partition tolerance: Hoe goed gaat je systeem om met failures. Dus blijft werken ondanks netwerk failures.
+
+![CAP Theorem](/images/eda-cap-theorem.png)
 
 ### Design for failure
 
@@ -68,6 +75,9 @@ Je kan ook verschillende databases hebben voor het write model en het read model
 
 Traditioneel: UI => Logica (api controller, manager) => DB
 Event driven: UI => Logica (api controller, command handler, (1. domain, 2. repository)) => DB
+
+![CQRS](/images/eda-cqrs.png)
+![CQRS 2](/images/eda-cqrs-2.png)
 
 #### CQRS vs CRUD vs Task based
 
