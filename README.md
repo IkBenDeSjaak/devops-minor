@@ -13,3 +13,4 @@ This repository contains theory information gathered during the minor DevOps.
 - [C4](/c4.md)
 - [BDD](/bdd.md)
 - [Kubernetes](/kubernetes.md)
+- [EDA](/eda.md)

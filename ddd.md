@@ -39,7 +39,7 @@ Zorg voor kloppende datamodellen.
 Een commando verandert iets binnen iets. Een aggregate is eigenlijk het hoofdonderwerp van je commando's.
 
 - **Entity pattern**: Object with unique identity. Model in db, heeft een id zoals postcode + huisnr.
-- **Value object** Value has no identity. Entity zonder id, gedefinieerd door al zn waarden. Bijv een postzegel.
+- **Value object**: Value has no identity. Entity zonder id, gedefinieerd door al zn waarden. Bijv een postzegel.
 - **Domain events**: Something that happened in the domain that you want other parts of the same domain (in-process) to be aware of. Bijv: OrderStarted.
 
 ![Aggregate voorbeeld](/images/ddd-aggregate.png)
