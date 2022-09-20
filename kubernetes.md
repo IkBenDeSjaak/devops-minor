@@ -59,6 +59,15 @@ A ReplicaSet is a declarative way to manage Pods. It is basically a Pod controll
 - Provide fault tolerance
 - Can be used to scale Pods.
 
+#### StatefulSet
+
+A StatefulSet is similar to a Deployment. The key differences are:
+
+- Deployments are used for stateless applications, StatefulSets for stateful applications.
+- The pods in a deployment are interchangeable, whereas the pods in a StatefulSet are not.
+- Deployments require a service to enable interaction with pods, while a headless service handles the pods’ network ID in StatefulSets.
+- In a deployment, the replicas all share a volume and PVC, while in a StatefulSet each pod has its own volume and PVC.
+
 #### Services
 
 Services abstract Pod IP addresses and load balance between Pods. It relies on labels to associate a Service with a Pod.
@@ -72,6 +81,51 @@ Services abstract Pod IP addresses and load balance between Pods. It relies on l
 - **LoadBalancer**: Provision an external IP to act as a load balancer for the service. This sits in front of our different Nodes. NodePort and ClusterIP are automatically created. Useful when combined with a cloud provider's load balancer. The load balancer can load balance to a different worker Node.
 - **ExternalName**: Maps a service to a DNS name.
 
+### Storage options
+
+#### Volumes
+
+A volume references a storage location. A Pod can have mulitple volumes to store data.
+
+There are multiple volume types:
+
+- **emptyDir**: Empty directory for data that pods need during their lifetime. Goes away when Pod goes down.
+- **hostPath**: Pod mounts to a worker Node's filesystem. You lose the volume when Node goes down.
+- **nfs**: When a Pod is mounting to a NFS volume somewhere on the network.
+- **persistentVolumeClaim**: A request for a Persistent Volume (PV) storage unit.
+- **configMap**: For configuration files (key/value pairs).
+- **cloud**: Cluster-wide storage.
+
+##### PersistentVolume
+
+A PersistentVolume (PV) is a cluster-wide storage unit with a lifecycle independent from a Pod provisioned by an administrator. It relies on network attached storage (NAS). This can be cloud or a local network. It stays available to a Pod even if this storage gets rescheduled to another Node.
+
+![Kubernetes overview PersistentVolume](/images/k8s-overview-persistentvolume.png)
+
+##### StorageClasses
+
+A StorageClass provides a way for administrators to describe the "classes" of storage they offer. It acts as a kind of template and supports dynamic provisioning of PersistentVolumes.
+
+![Kubernetes overview StorageClasses](/images/k8s-overview-storageclasses.png)
+
+#### ConfigMap
+
+Store configuration information and provide it to containers. ConfigMaps basically provide key/value pairs. ConfigMaps can be accessed from a Pod by using env variables or ConfigMap volumes. Using volumes will automatically update files referenced by the volumes when the ConfigMap changes.
+
+This can be done in several ways:
+
+- ConfigMap manifest (YML file): `kubectl create -f <file>`
+- .config file: `kubectl create configmap <cm-name> --from-file=<file>`
+- .env file: `kubectl create configmap <cm-name> --from-env-file=<file>`
+
+#### Secret
+
+A Secret is an object that contains sensitive data (password, token, key). This avoid storing secrets in container images. Secrets are only available to Nodes that have a Pod needing that Secret.
+
+- `kubectl create secret generic my-secret --from-literal=pwd=password`: Create secret and store in Kubernetes.
+- `kubectl create secret generic my-secret --from-file=ss-publickey=<path-to-file>`: Create secret from file and store in Kubernetes.
+- `kubectl create secret tls tls-secret --cert=<path-to-cert> --key=<path-to-key>`: Create secret from a key pair.
+
 ## Kubectl
 
 - `kubectl version`: Check kubernetes version.
@@ -81,7 +135,7 @@ Services abstract Pod IP addresses and load balance between Pods. It relies on l
 - `kubectl get pod <pod-name> -o yaml`: Retrieve information about a pod in YAML.
 - `kubectl get deployments --show-labels`: Get deployments and show labels.
 - `kubectl get deployments -l app=ngninx`: Get deployments with label nginx.
-- `kubectl describe pod <pod-name>`: Retrieve information about a pod and show events.
+- `kubectl describe pod <pod-name>`: Retrieve information about a pod and show events and volumes.
 - `kubectl exec <pod-name> -it sh`: Shell into a pod.
 - `kubectl edit -f nginx.pod.yml`: Edit a resource file.
 - `kubectl run <pod-name> --image=<image-name>`: Create a Deployment for a Pod.
@@ -96,6 +150,7 @@ Services abstract Pod IP addresses and load balance between Pods. It relies on l
 - `kubectl delete pod <name-of-pod>`: Deletes the pod and will cause kubernetes to make a new instance of the pod.
 - `kubectl delete deployment <name-of-deployment>`: Deletes the deployment.
 - `kubectl scale deployment <name-of-deployment> --replicas=5`: Scale out the deployments.
+- `kubectl logs <pod-name> -c <container-name>`: View logs of specific container in Pod.
 
 ## Examples
 
