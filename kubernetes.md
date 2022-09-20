@@ -12,18 +12,31 @@
 
 ### Big picture
 
-- **Master node**: the boss of the operation that manage worker nodes.
+- **Master Node/Control Plane**: the boss of the operation that manage worker nodes.
+  - *api*: It exposes the Kubernetes API. The frontend for the Kubernetes control plane.
+  - *etcd*: Key/value store for cluster data.
+  - *kube-scheduler*: Selects a node for newly created Pods.
+  - *kube-controller-manager*: Component that runs controller processes. Makes changes to move current to desired state.
+  - *cloud-controller-manager*: Has cloud-specific logic. Lets you link your cluster into your cloud provider's API.
 - **(Worker) Node**: Can be physical servers or virtual machines.
-  - *Kubelet*: Agent installed on the node that makes communication between master and the node possible.
-  - *Container runtime*: Run container in the pods.
-  - *Kube-Proxy*: Makes sure every pod gets a unique IP. It reflects services.
+  - *Kubelet*: Agent installed on the node that makes communication between master and the node possible. It makes sure containers are running in a Pod. Can handle multiple Pods.
+  - *Container runtime*: Run container in the Pods.
+  - *Kube-Proxy*: Makes sure every pod gets a unique IP. It reflects services. It maintains network rules in a Node.
 - **Pod**: There can be multiple pods inside a Node. Inside a pod a container runs.
 - **Cluster**: A set of nodes together that run containerized apps.
 - **Service**: Enable pods to communicate with the outside world or amongst themselves. It's a deployed group of nodes in a cluster.
 
-![Kubernetes master overview](/images/k8s-overview-master.png)
-![Kubernetes cluster overview](/images/k8s-overview-cluster.png)
+Cluster overview technical:
+![Kubernetes cluster overview 1](/images/k8s-overview-cluster-1.svg)
+
+Cluster overview multiple Pods:
 ![Kubernetes cluster overview 2](/images/k8s-overview-cluster-2.png)
+
+Cluster overview simple language:
+![Kubernetes cluster overview 3](/images/k8s-overview-cluster-3.png)
+
+Cluster overview with services:
+![Kubernetes cluster overview 4](/images/k8s-overview-cluster-4.png)
 
 #### Pods
 
