@@ -63,6 +63,13 @@ Deployments and ReplicaSets ensure Pods stay running and can be used to scale Po
 ![Kubernetes deployments overview](/images/k8s-overview-deployments.png)
 ![Kubernetes deployments overview 2](/images/k8s-overview-deployments-2.png)
 
+You can do multiple deployment strategies:
+
+- Rolling update (replace existing Pods with newer ones)
+- Blue/green deployment (have two production environments, do all final testing on one of them and then ultimately switch to that one)
+- Canary deployment (similar to rolling update, but instead targets certain users instead of servers)
+- Recreate (terminate all Pods and replaces them with the new ones at once)
+
 ##### ReplicaSet
 
 A ReplicaSet is a declarative way to manage Pods. It is basically a Pod controller. It manages multiple Pods.
