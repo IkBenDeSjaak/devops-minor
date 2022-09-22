@@ -14,3 +14,4 @@ This repository contains theory information gathered during the minor DevOps.
 - [BDD](/bdd.md)
 - [Kubernetes](/kubernetes.md)
 - [EDA](/eda.md)
+- [RabbitMQ](/rabbitmq.md)
