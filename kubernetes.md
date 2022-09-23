@@ -98,7 +98,7 @@ Services abstract Pod IP addresses and load balance between Pods. It relies on l
 
 - **ClusterIP**: Expose the service on a cluster-internal IP (default). Makes service only reachable within the cluster. Allows Pods to talk to other Pods. No external access.
 - **NodePort**: Expose the service on each Node's IP at a static port. ClusterIP to which the NodePort services routes is automatically created. An external caller can now call into the IP address with that port. Opens specific port on all Nodes.
-- **LoadBalancer**: Provision an external IP to act as a load balancer for the service. This sits in front of our different Nodes. NodePort and ClusterIP are automatically created. Useful when combined with a cloud provider's load balancer. The load balancer can load balance to a different worker Node. Useful when you want to directly expose a service. Uses an IP for every service.
+- **LoadBalancer**: Provision an external IP to act as a load balancer for the service. This sits in front of our different Nodes. NodePort and ClusterIP are automatically created. Useful when combined with a cloud provider's load balancer. The load balancer can load balance to a different worker Node. Useful when you want to directly expose a service. Uses an IP for every service. Balanceren van de load naar worker nodes.
 - **ExternalName**: Maps a service to a DNS name.
 
 #### Ingress
