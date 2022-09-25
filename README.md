@@ -15,3 +15,5 @@ This repository contains theory information gathered during the minor DevOps.
 - [Kubernetes](/kubernetes.md)
 - [EDA](/eda.md)
 - [RabbitMQ](/rabbitmq.md)
+- [Prometheus](/prometheus.md)
+- [Chaos engineering](/chaos-engineering.md)
