@@ -46,10 +46,14 @@ Een tool om Chaos Engineering te doen in Kubernetes. Can be deployed in a Kubern
   - Memory Stress: continuously stress out virtual memory.
   - CPU Stress: continuously stress out CPU.
 
-## Shift left
+## DevOps lifecycle
+
+![Shifting left vs right](/images/shift-left-vs-shift-right.jpg)
+
+### Shift left
 
 Denk aan het begin van het project al na over testen, deployen en monitoren. In plaats van alles ontwikkelen en daarna pas alles live zetten zoals traditioneel zo is.
 
-## Shift right
+### Shift right
 
 Eerder load testen en performance testen. Performance en load testen in productie met echte omstandigheden. Je kan in een staging area testen (die lijkt op productie) of productie omgeving lokaal halen. Je wil het liefst load testen op productie, want dat is de echte omgeving.
