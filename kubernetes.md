@@ -180,6 +180,32 @@ A Secret is an object that contains sensitive data (password, token, key). This 
 - `kubectl scale deployment <name-of-deployment> --replicas=5`: Scale out the deployments.
 - `kubectl logs <pod-name> -c <container-name>`: View logs of specific container in Pod.
 
+### Kubernetes Dashboard
+
+Create dashboard:
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.6.1/aio/deploy/recommended.yaml
+```
+
+Create admin user:
+
+```bash
+kubectl apply -f dashboard-adminuser.yaml
+```
+
+Create token to login to dashboard:
+
+```bash
+kubectl -n kubernetes-dashboard create token admin-user
+```
+
+Make dashboard visible in browser:
+
+```bash
+kubectl proxy
+```
+
 ## Examples
 
 For more examples of working with YML and Kubernetes go to: <https://github.com/DanWahlin/DockerAndKubernetesCourseCode>.
