@@ -118,7 +118,3 @@ The basic text editor is `vi`. It has 3 modes:
 - Insert mode: Add text to the document.
 - Ex mode: View or change settings as well as opening, saving or aborting changes (save changes: `:w`, quit file: `:q`)./
 
-## Vragen
-
-1. Er stond iets over de `dd` command met blocksize en number of blocks. Moeten we dat ook weten wat blocksize enzo is?
-2. In hoeverre moeten we regular expressions kennen?
